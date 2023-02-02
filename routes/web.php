@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CategorySortController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +30,16 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
+Route::get('/category', [CategoryController::class, 'index'])->middleware('auth')->name('category');
+Route::post('/category', [CategoryController::class, 'store'])->middleware('auth')->name('category.create');
+Route::post('/category/delete', [CategoryController::class, 'destroy'])->middleware('auth')->name('category.delete');
+Route::post('/category/update', [CategoryController::class, 'update'])->middleware('auth')->name('category.create');
+Route::post('/category/sort', CategorySortController::class)->middleware('auth')->name('category.sort');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

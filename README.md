@@ -1,3 +1,13 @@
+## Category-tree
+
+Projekt został wykonany za pomocą frameworka Laravel, wykorzystując Inertia.js oraz Vue.js. W projekcie został zainstalowany pakiet breeze.
+
+Założeniami projektu było wykonanie mechanizmu obsługującego strukturę drzewiastą na dowolnej ilości poziomów. 
+- Do obsługi przenoszenia oraz sortowania elementów między gałęziami po stronie front-endu wykorzystano pakiet vue.draggable.next.
+- Zaimplementowano wszystkie przewidziane funkcjonalności dla administratora (dodawanie, usuwanie, edycja, sortowanie, przenoszenie węzłów do innych gałęzi).
+- W przypadku usuwania administrator może wybrać czy usunąć kategorię wraz z podkategoriami.
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
