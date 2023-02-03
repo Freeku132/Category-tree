@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class CategoryController extends Controller
@@ -44,9 +45,7 @@ class CategoryController extends Controller
 
         if($request->delete_sub) {
 
-            foreach ($categories as $cat){
-                $cat->delete();
-            }
+            DB::select('CALL DropSubCategory('.$category->id.');');
 
         } else {
             foreach ($categories as $cat){
@@ -55,9 +54,11 @@ class CategoryController extends Controller
                     'order' => $category->order,
                 ]);
             }
+            $category->deleteOrFail();
         }
 
-        $category->deleteOrFail();
+
+
 
         return back()->with('success');
     }
