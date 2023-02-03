@@ -11,8 +11,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $category = \App\Models\Category::query()->where('category_parent', NULL)->with('allSubCategories')->orderBy('order')->get();
-
+        $category = Category::query()->where('category_parent', NULL)->with('allSubCategories')->orderBy('order')->get();
 
         return Inertia::render('Category',[
             'categories' => $category,
@@ -34,7 +33,7 @@ class CategoryController extends Controller
             'category_parent' => $attributes['category_parent_id']
         ]);
 
-        return back()->with('success');
+        return redirect()->back()->with('success_message', 'category created successfully');
     }
 
     public function destroy(Request $request)
@@ -58,9 +57,7 @@ class CategoryController extends Controller
         }
 
 
-
-
-        return back()->with('success');
+        return redirect()->back()->with('success_message', 'category deleted successfully');
     }
 
     public function update(Request $request)
@@ -76,6 +73,6 @@ class CategoryController extends Controller
                 'name' => $attributes['name']
             ]);
 
-        return back()->with('success');
+         return redirect()->back()->with('success_message', 'category updated successfully');
     }
 }

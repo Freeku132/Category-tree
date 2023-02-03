@@ -22,6 +22,7 @@
 <script setup>
 import {useForm} from "@inertiajs/vue3";
 import {ref} from "vue";
+import {usePage} from "@inertiajs/vue3";
 
 let props = defineProps({
     category: Object,
@@ -54,8 +55,10 @@ let addForm = useForm({
 })
 let submitAddForm = () => {
     addForm.post('/category', {
+        preserveState: true,
         onSuccess: () => {
             visibleAddForm.value = false;
+            alert(usePage().props.flash.success_message)
         }
     })
 }

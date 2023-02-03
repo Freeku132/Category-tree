@@ -21,6 +21,6 @@ class CategorySortController extends Controller
                 'category_parent' => $request->category_parent
             ]);
         }
-//        return back();
+        return back();
     }
 }

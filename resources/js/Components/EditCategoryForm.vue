@@ -21,7 +21,7 @@
 
 <script setup>
 import {ref} from "vue";
-import {useForm} from "@inertiajs/vue3";
+import {useForm, usePage} from "@inertiajs/vue3";
 
 let props = defineProps({
     category : Object
@@ -44,8 +44,10 @@ let editForm = useForm({
 
 let submitEditForm = () => {
     editForm.post('/category/update', {
+        preserveState: true,
         onSuccess: () => {
             visibleEditForm.value = false;
+            alert(usePage().props.flash.success_message)
         }
     })
 }
